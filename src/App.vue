@@ -1,15 +1,27 @@
 <template>
   <div class="app">
-    івпівп
-    <router-view></router-view>
+    <header-layout />
+    <main>
+      <router-view></router-view>
+    </main>
+    <footer-layout/>
   </div>
+
 </template>
 
 <script>
-export default {};
+import HeaderLayout from "@/components/Header/Header";
+import FooterLayout from "@/components/Footer/Footer"
+
+export default {
+  components: {
+    HeaderLayout,
+    FooterLayout
+  },
+};
 </script>
 
-<style  scoped>
+<style>
 * {
   margin: 0;
   padding: 0;
@@ -17,11 +29,20 @@ export default {};
 }
 
 body {
+  font-family: Arial, sans-serif;
   margin: 0;
+  padding: 0;
 }
 
 ul,
 li {
-  text-decoration: none;
+  list-style: none;
+}
+
+main {
+  padding: 0 20px 0 20px;
+  min-height: 100%;
+
+
 }
 </style>

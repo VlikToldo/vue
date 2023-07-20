@@ -1,7 +1,6 @@
 <template>
   <div>
     <div v-if="posts.length > 0">
-      <h3>Film List</h3>
       <ul class="film-list">
         <list-item
           v-for="post in posts"
@@ -31,10 +30,10 @@ export default {
 
 <style scoped>
 .film-list {
-  min-height: 455px;
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 20px 0 40px 0;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap:10px;
+  margin-bottom: 20px;
 }
 </style>

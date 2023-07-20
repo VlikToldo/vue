@@ -1,9 +1,25 @@
 <template>
   <form class="form" @submit.prevent>
     <h4>Register</h4>
-    <input v-model="post.title" class="input" type="text" placeholder="Title" />
-    <input v-model="post.body" class="input" type="text" placeholder="Post" />
-    <button class="btn" @click="createPost">Register</button>
+    <input
+      v-model="post.title"
+      class="input"
+      name="email"
+      type="email"
+      placeholder="Email"
+      required
+      pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+    />
+    <input
+      v-model="post.body"
+      class="input"
+      name="tel"
+      type="tel"
+      placeholder="Number"
+      required
+      pattern="^\380\d{9}$"
+    />
+    <button class="btn">Register</button>
   </form>
 </template>
 
@@ -16,16 +32,6 @@ export default {
         body: "",
       },
     };
-  },
-  methods: {
-    createPost() {
-      this.post.id = Date.now();
-      this.$emit("create", this.post);
-      this.post = {
-        title: "",
-        body: "",
-      };
-    },
   },
 };
 </script>

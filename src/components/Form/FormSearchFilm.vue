@@ -8,7 +8,7 @@
       autoFocus
       placeholder="Search movie"
     />
-    <button @click="searchFilm" class="btn" type="submit">Search Film</button>
+    <button @click="searchFilm" class="btn" type="submit">Search</button>
   </form>
 </template>
 

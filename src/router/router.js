@@ -1,15 +1,18 @@
-import Main from "@/pages/Main";
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import Vue from "vue";
+import VueRouter from "vue-router";
+
+import FilmCardPage from "@/pages/FilmCardPage";
+import LibraryPage from "@/pages/LibraryPage";
 
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/', components: Main},
+  { path: "/", component: LibraryPage  },
+  { path: "/:movieId", component: FilmCardPage },
 ];
 
 const router = new VueRouter({
-  routes
+  routes,
 });
 
 export default router;

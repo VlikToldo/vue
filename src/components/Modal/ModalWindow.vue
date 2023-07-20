@@ -1,6 +1,6 @@
 <template>
   <div class="modal" v-if="show" @click.stop="hideModal">
-    <div @click.stop class="content">
+    <div class="content" @click.stop >
       <slot> </slot>
     </div>
   </div>
@@ -28,6 +28,7 @@ export default {
   bottom: 0;
   right: 0;
   left: 0;
+  z-index: 1000;
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   display: flex;
