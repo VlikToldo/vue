@@ -1,6 +1,6 @@
 <template>
   <div class="modal" v-if="show" @click.stop="hideModal">
-    <div class="content" @click.stop >
+    <div class="content" @click.stop>
       <slot> </slot>
     </div>
   </div>
@@ -16,9 +16,9 @@ export default {
   },
   methods: {
     hideModal() {
-      this.$emit("updateShow", this.show) ;
-    }
-  }
+      this.$emit("updateShow", this.show);
+    },
+  },
 };
 </script>
 
@@ -33,10 +33,10 @@ export default {
   position: fixed;
   display: flex;
 }
-.content{
-    margin: auto;
-    background: white;
-    border-radius: 12px;
-    min-height: 50px;
+.content {
+  margin: auto;
+  background: white;
+  border-radius: 12px;
+  min-height: 50px;
 }
 </style>

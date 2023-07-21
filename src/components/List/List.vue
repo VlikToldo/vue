@@ -36,4 +36,6 @@ export default {
   gap:10px;
   margin-bottom: 20px;
 }
+
+
 </style>

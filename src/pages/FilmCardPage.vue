@@ -71,18 +71,32 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  gap:20px;
   padding: 0;
 }
 .container-img{
   max-width: 400px;
   min-width: 250px;
-  margin-right: 20px;
   overflow: hidden;
 }
 .img{
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+@media screen and (max-width: 767px) {
+  .movie-card-info{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+  }
+
+  .container-img{
+    
+  }
+
 }
 
 

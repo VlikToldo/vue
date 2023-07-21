@@ -1,8 +1,8 @@
 <template>
-  <form class="form" @submit.prevent>
+  <form class="form" @submit.prevent="hideModal">
     <h4>Register</h4>
     <input
-      v-model="post.title"
+      v-model="post.number"
       class="input"
       name="email"
       type="email"
@@ -11,27 +11,47 @@
       pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
     />
     <input
-      v-model="post.body"
+      v-model="post.email"
       class="input"
-      name="tel"
+      name="number"
       type="tel"
       placeholder="Number"
       required
       pattern="^\380\d{9}$"
-    />
-    <button class="btn">Register</button>
+    /> 
+    <button  class="btn">Register</button>
   </form>
 </template>
 
 <script>
 export default {
+  props: {
+    show: {
+      type: Boolean,
+      default: false,
+    }
+  },
   data() {
     return {
       post: {
-        title: "",
-        body: "",
+        number: "",
+        email: "",
       },
     };
+  },
+  methods: {
+    hideModal() {
+      this.$emit("updateShow", this.show);
+      this.post = { number: "", email: "" };
+    },
+  },
+  watch: {
+    post: {
+      handler(newValue) {
+        console.log(newValue);
+      },
+      deep: true,
+    },
   },
 };
 </script>

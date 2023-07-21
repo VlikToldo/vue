@@ -38,11 +38,13 @@ ul,
 li {
   list-style: none;
 }
+.app{
+  display: grid;
+  grid-template-rows: auto 1fr auto; 
+  min-height: 100vh;
+}
 
 main {
   padding: 0 20px 0 20px;
-  min-height: 100%;
-
-
 }
 </style>

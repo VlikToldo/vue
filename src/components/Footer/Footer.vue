@@ -10,6 +10,9 @@ export default {};
 
 <style scoped>
 .footer {
+
+  bottom: 0;
+  left: 0;
   padding-top: 10px;
   padding-bottom: 50px;
   left: 0;

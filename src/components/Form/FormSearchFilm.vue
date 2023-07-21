@@ -82,4 +82,20 @@ export default {
 .btn:focus {
   background-color: #303f9f;
 }
+
+@media screen and (max-width: 420px) {
+  .SearchForm{
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 10px;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .btn{
+    padding: 8px 5px;
+    min-width: 100px;
+    margin-right: 15px;
+  }
+}
 </style>

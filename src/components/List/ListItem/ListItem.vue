@@ -35,7 +35,7 @@ export default {
   max-width: 350px;
   max-height: 450px;
   border-radius: 30px;
-  flex-basis: calc((100% - 28px) / 3);
+  
   overflow: hidden;
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
     transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -45,6 +45,12 @@ export default {
     transform: scale(1.015);
     box-shadow: 4px 3px 12px -1px rgba(17, 16, 16, 0.5);
     cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 420px){
+  .film-list-item{
+    flex-basis: calc((100% - 28px) / 2);
   }
 }
 
