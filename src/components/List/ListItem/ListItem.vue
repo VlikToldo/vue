@@ -3,7 +3,7 @@
     <div class="container-img">
       <img
         class="cards-img"
-        :src="`https://image.tmdb.org/t/p/w400${post.backdrop_path}`"
+        :src="Boolean(post.backdrop_path) ? `https://image.tmdb.org/t/p/w400${post.backdrop_path}`: defaultPhoto"
         alt="title"
         loading="lazy"
       />
@@ -26,6 +26,11 @@ export default {
       required: true,
     },
   },
+  data() {
+    return{
+      defaultPhoto: 'https://cdn-icons-png.flaticon.com/512/4054/4054617.png',
+    }
+  },
 };
 </script>
 
@@ -35,15 +40,13 @@ export default {
   max-width: 350px;
   max-height: 450px;
   border-radius: 30px;
-  
+  box-shadow: 4px 3px 12px -1px rgba(17, 16, 16, 0.5);
   overflow: hidden;
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
     display: block;
     transform: scale(1.015);
-    box-shadow: 4px 3px 12px -1px rgba(17, 16, 16, 0.5);
     cursor: pointer;
   }
 }
@@ -57,7 +60,7 @@ export default {
 .cards-img {
   object-fit: cover;
   max-width: 100%;
-  height: auto;
+  max-height: 197px;
   display: block;
 }
 

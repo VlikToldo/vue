@@ -8,6 +8,17 @@
       </div>
       <film-list :posts="posts" @remove="removePost" v-if="!isFilmLoading" />
       <p v-else>Loading...</p>
+      <div class="page-wrapper">
+        <div 
+        v-for="pageNumber in totalPages" 
+        :key="pageNumber"
+        class="page" 
+        :class="{ 'current-page': page === pageNumber}"
+        @click="changePage(pageNumber)"
+        >
+          {{ pageNumber }}
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -16,7 +27,7 @@ import FormSearchFilm from "@/components/Form/FormSearchFilm";
 import FilmList from "@/components/List/List";
 import MySelect from "@/components/MySelect/MySelect";
 
-import { searchMovie, searchFilm } from "@/shared/services/movie-api";
+import { searchMovies, searchFilm } from "@/shared/services/movie-api";
 export default {
   components: {
     FilmList,
@@ -33,6 +44,10 @@ export default {
         { value: "vote_average", name: "Sort by rating" },
         { value: "release_date", name: "Sort by year" },
       ],
+      page: 1,
+      totalPages: 10,
+      
+
     };
   },
   methods: {
@@ -40,11 +55,15 @@ export default {
     removePost(post) {
       this.posts = this.posts.filter((p) => p.id !== post.id);
     },
+    changePage(pageNumber) {
+      this.page = pageNumber
+      this.searchMovies()
+    },
     // Пошук найпопулярніших фільмів
-    async searchMovie() {
+    async searchMovies() {
       try {
         this.isFilmLoading = true;
-        const data = await searchMovie();
+        const data = await searchMovies(this.page);
         this.posts = [...data.results];
       } catch (error) {
         console.log(error.message);
@@ -66,7 +85,7 @@ export default {
     },
   },
   mounted() {
-    this.searchMovie();
+    this.searchMovies();
   },
   // Слідкує за селектом та фільтрує список фільмів
   watch: {
@@ -82,8 +101,7 @@ export default {
 </script>
 
 <style scoped>
-
-.title{
+.title {
   margin-bottom: 10px;
   color: #3f51b5;
 }
@@ -122,5 +140,29 @@ export default {
 .btn:hover,
 .btn:focus {
   background-color: #303f9f;
+}
+
+.page-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.page {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  border-radius: 20px;
+  border: solid 2px blue;
+  width: 25px;
+  height: 25px;
+  background-color: #38448f82;
+  padding: 2px;
+  cursor: pointer;
+}
+
+.current-page {
+  background-color: #0021f899;
 }
 </style>

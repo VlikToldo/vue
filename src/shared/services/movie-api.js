@@ -4,9 +4,9 @@ const API_KEY = 'cc476e5bf962689cf79d0305b2ea0701';
 const COMMON_URL = 'https://api.themoviedb.org/3';
 
 // Пошук найпопулярніших фільмів
-const searchMovie = async () => {
+const searchMovies = async (page) => {
   const { data } = await axios.get(
-    `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`)
+    `https://api.themoviedb.org/3/trending/movie/day?page=${page}&&api_key=${API_KEY}`)
       return data;
 };
 // Пошук фільму по назві
@@ -21,4 +21,4 @@ const searchInfo = async (movieId) => {
 }
 
 
-export {searchMovie, searchFilm, searchInfo};
+export {searchMovies, searchFilm, searchInfo};
